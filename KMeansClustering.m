@@ -1,29 +1,28 @@
-function KMeansClustering(inImgPath,outPath,numK)
+function KMeansClustering (inPath,inImgFname,outPath,numK)
 
-    % % read img
-    % rgb = imread(inImgPath);
-    % r = rgb(:,:,1);
-    % g = rgb(:,:,2);
-    % b = rgb(:,:,3);
-    % sz = size(rgb);
-
-    % % get centeroids
-    % cent = zeros(numK,3);
-    % for i = 1:numK
-    %     randCol = round(rand*sz(1));
-    %     randRow = round(rand*sz(2));
-    %     cent(i,:) = [r(randCol,randRow) g(randCol,randRow) b(randCol,randRow)];
-    % end
+    % gen in full file path
+    inFullFile = fullfile(inPath, [inImgFname, '.jpg']);
 
     % read img
-    I = imread(inImgPath);
+    I = imread(inFullFile);
 
     % seg img into k-means clustering
     [L,Centers] = imsegkmeans(I,numK);
     B = labeloverlay(I,L);
-    imshow(B)
-    title('k = ');
+    % imshow(B)
 
+    % title
+    name = sprintf('%s', inImgFname);
+    kTitle = append('k = ',num2str(numK));
+    title({name;kTitle});
+
+    % gen out full file path
+    outFname = append('out-',inImgFname,'-k',num2str(numK));
+    outFullfile = fullfile(outPath, [outFname, '.jpg']);
+
+    % out to jpeg
+    imwrite(B, outFullfile);
+    % print(outFullfile, '-djpeg');
 
 
 end

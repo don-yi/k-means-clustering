@@ -1,11 +1,13 @@
-% inImgPath = 'in\autumn-leaves.jpg';
-inImgPath = 'in\cocker-spaniel.jpg';
-% inImgPath = 'in\pumpkin.jpg';
-% inImgPath = 'in\Raincoat.jpg';
+inPath = 'in\';
 
-outPath = 'out\out-k3';
+inImgFname = 'autumn-leaves';
+% inImgFname = 'cocker-spaniel';
+% inImgFname = 'pumpkin';
+% inImgFname = 'Raincoat';
+
+outPath = 'out\';
 
 % for 3 <= k <= 10
 numK = 3;
 
-KMeansClustering(inImgPath,outPath,numK);
+KMeansClustering (inPath,inImgFname,outPath,numK);
