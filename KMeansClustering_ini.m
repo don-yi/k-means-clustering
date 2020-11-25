@@ -10,4 +10,8 @@ outPath = 'out\';
 % for 3 <= k <= 10
 numK = 3;
 
-KMeansClustering (inPath,inImgFname,outPath,numK);
+for i = 3:10
+    KMeansClustering (inPath,inImgFname,outPath,i);
+end
+
+% KMeansClustering (inPath,inImgFname,outPath,numK);

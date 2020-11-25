@@ -17,12 +17,11 @@ function KMeansClustering (inPath,inImgFname,outPath,numK)
     title({name;kTitle});
 
     % gen out full file path
-    outFname = append('out-',inImgFname,'-k',num2str(numK));
-    outFullfile = fullfile(outPath, [outFname, '.jpg']);
+    outFname = append('out-k',num2str(numK));
+    outFullfile = fullfile(outPath,inImgFname,[outFname, '.jpg']);
 
-    % out to jpeg
+    % write to jpeg
     imwrite(B, outFullfile);
-    % print(outFullfile, '-djpeg');
 
 
 end
